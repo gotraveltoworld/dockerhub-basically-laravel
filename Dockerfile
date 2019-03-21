@@ -1,7 +1,7 @@
 FROM futuretraveler/dockerhub-laravel-demo:latest
 # Set working directory
-WORKDIR /var/www
+WORKDIR /var/www/html
 
-# Copy composer.json into container
-COPY composer.json .
-RUN composer install -o
+# Run composer.
+RUN composer global require "laravel/installer" \ 
+    && composer create-project --prefer-dist laravel/laravel /var/www/html
